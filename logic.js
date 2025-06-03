@@ -1,5 +1,4 @@
-
-        // JavaScript para la interactividad
+// JavaScript para la interactividad
         const pastel = document.getElementById('pastel');
         const mensaje = document.getElementById('mensaje');
         const resplandor = document.getElementById('resplandor');
@@ -78,10 +77,6 @@
         
         // Función para activar la celebración
         function activarCelebracion() {
-            // Mostrar mensaje
-            mensaje.style.opacity = '1';
-            mensaje.style.transform = 'translateY(0)';
-            
             // Mostrar resplandor
             resplandor.style.opacity = '1';
             
@@ -92,9 +87,15 @@
             const audio = new Audio('https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3');
             audio.play().catch(e => console.log("Auto-play no permitido"));
             
-            // Mensaje emergente
+            // Mostrar mensaje personalizado en lugar de alert
             setTimeout(() => {
-                alert("¡FELIZ CUMPLEAÑOS DIANA! 🎂✨🎉");
+                const mensajePersonalizado = document.getElementById('mensajePersonalizado');
+                mensajePersonalizado.style.display = 'flex';
+                
+                // Añadir evento al botón cerrar
+                document.getElementById('cerrarMensaje').addEventListener('click', function() {
+                    mensajePersonalizado.style.display = 'none';
+                });
             }, 600);
             
             // Animación del pastel
@@ -107,58 +108,5 @@
             setTimeout(() => {
                 resplandor.style.opacity = '0';
             }, 2000);
-            
-            // Ocultar mensaje después de 5 segundos
-            setTimeout(() => {
-                mensaje.style.opacity = '0';
-                mensaje.style.transform = 'translateY(-100px)';
-            }, 5000);
         }
-        
-        // Eliminar el evento anterior
-        // pastel.addEventListener('click', function() { ... });
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
 
-const PORT = 3000;
-
-const server = http.createServer((req, res) => {
-    let filePath = path.join(__dirname, req.url === '/' ? 'happy bir.html' : req.url);
-    
-    // Obtener la extensión del archivo
-    const extname = String(path.extname(filePath)).toLowerCase();
-    
-    // Tipos MIME para diferentes extensiones de archivo
-    const contentType = {
-        '.html': 'text/html',
-        '.js': 'text/javascript',
-        '.css': 'text/css',
-        '.png': 'image/png',
-        '.jpg': 'image/jpg',
-        '.gif': 'image/gif',
-        '.svg': 'image/svg+xml'
-    }[extname] || 'application/octet-stream';
-    
-    // Leer el archivo
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if(error.code == 'ENOENT') {
-                res.writeHead(404);
-                res.end('Archivo no encontrado');
-            } else {
-                res.writeHead(500);
-                res.end('Error del servidor: ' + error.code);
-            }
-        } else {
-            // Enviar el contenido con el tipo MIME correcto
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
-});
-
-server.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
-    console.log(`Abre tu navegador y visita: http://localhost:${PORT}`);
-});
