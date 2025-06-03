@@ -1,0 +1,311 @@
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8e1f4 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .tarjeta {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #ff66b3;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos del pastel mejorado */
+        .pastel {
+            margin: 30px auto 40px;
+            cursor: pointer;
+            width: 250px;
+            height: 250px;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .pastel:hover {
+            transform: scale(1.05);
+        }
+        
+        .base {
+            width: 220px;
+            height: 70px;
+            background: linear-gradient(to bottom, #f8c291 20%, #e58e26 100%);
+            border-radius: 10px 10px 5px 5px;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            box-shadow: 0 6px 0 #e58e26;
+            border: 2px solid #e58e26;
+            overflow: hidden;
+        }
+        
+        .base::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 5px,
+                rgba(255,255,255,0.2) 5px,
+                rgba(255,255,255,0.2) 10px
+            );
+            bottom: 0;
+        }
+        
+        .medio {
+            width: 180px;
+            height: 65px;
+            background: linear-gradient(to bottom, #f6b6c9 20%, #e56b93 100%);
+            border-radius: 10px 10px 5px 5px;
+            position: absolute;
+            bottom: 70px;
+            left: 35px;
+            box-shadow: 0 6px 0 #e56b93;
+            border: 2px solid #e56b93;
+            overflow: hidden;
+        }
+        
+        .medio::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 5px,
+                rgba(255,255,255,0.2) 5px,
+                rgba(255,255,255,0.2) 10px
+            );
+            bottom: 0;
+        }
+        
+        .superior {
+            width: 140px;
+            height: 60px;
+            background: linear-gradient(to bottom, #c3e6fc 20%, #7cb9d8 100%);
+            border-radius: 10px 10px 5px 5px;
+            position: absolute;
+            bottom: 135px;
+            left: 55px;
+            box-shadow: 0 6px 0 #7cb9d8;
+            border: 2px solid #7cb9d8;
+            overflow: hidden;
+        }
+        
+        .superior::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 5px,
+                rgba(255,255,255,0.2) 5px,
+                rgba(255,255,255,0.2) 10px
+            );
+            bottom: 0;
+        }
+        
+        .glaseado {
+            position: absolute;
+            height: 15px;
+            width: 140px;
+            background: white;
+            border-radius: 15px;
+            top: -5px;
+            left: 0;
+            background: linear-gradient(to right, #fff, #f6f6f6);
+            z-index: 2;
+        }
+        
+        .fresas {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #e74c3c;
+            border-radius: 50%;
+            top: -10px;
+            z-index: 3;
+        }
+        
+        .fresa1 { left: 20px; }
+        .fresa2 { left: 60px; }
+        .fresa3 { left: 100px; }
+        
+        .vela {
+            width: 10px;
+            height: 40px;
+            background: linear-gradient(to bottom, #fdfd96 60%, #f6da63 100%);
+            position: absolute;
+            bottom: 195px;
+            left: 120px;
+            border-radius: 5px;
+            z-index: 4;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .llama {
+            width: 14px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ff9d00, #ff6b35);
+            border-radius: 50% 50% 35% 35%;
+            position: absolute;
+            bottom: 235px;
+            left: 118px;
+            animation: flicker 0.8s infinite alternate;
+            box-shadow: 0 0 15px #ff6b35, 0 0 25px #ff9d00;
+            z-index: 5;
+        }
+        
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            25% { transform: scale(1.05) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1) rotate(2deg); opacity: 0.95; }
+            75% { transform: scale(1.1) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1.05) rotate(-2deg); opacity: 0.9; }
+        }
+        
+        /* Reemplaza la clase del mensaje actual con esta */
+        .mensaje {
+            opacity: 0;
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            color: #ff66b3;
+            font-size: 2.3rem;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 80%;
+            z-index: 100;
+            transform: translateY(-100px);
+            transition: opacity 0.5s, transform 0.5s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Decoraciones adicionales del pastel */
+        .decoracion {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            z-index: 3;
+        }
+        
+        .dec1 { bottom: 15px; left: 30px; background: #f8d56f; }
+        .dec2 { bottom: 15px; left: 70px; background: #f67280; }
+        .dec3 { bottom: 15px; left: 110px; background: #6fc3df; }
+        .dec4 { bottom: 15px; left: 150px; background: #f8d56f; }
+        .dec5 { bottom: 15px; left: 190px; background: #f67280; }
+        
+        .dec6 { bottom: 90px; left: 55px; background: #f8d56f; }
+        .dec7 { bottom: 90px; left: 95px; background: #6fc3df; }
+        .dec8 { bottom: 90px; left: 135px; background: #f67280; }
+        .dec9 { bottom: 90px; left: 175px; background: #f8d56f; }
+        
+        .dec10 { bottom: 155px; left: 75px; background: #f67280; }
+        .dec11 { bottom: 155px; left: 115px; background: #f8d56f; }
+        .dec12 { bottom: 155px; left: 155px; background: #6fc3df; }
+        
+        /* Confeti para la animación */
+        .confeti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .instruccion {
+            margin-top: 30px;
+            color: #666;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        /* Efecto resplandor */
+        .resplandor {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,102,179,0.2) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        
+        /* Estilos para el botón */
+        .btn {
+            border: none;
+            width: 15em;
+            height: 5em;
+            border-radius: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #1C1A1C;
+            cursor: pointer;
+            transition: all 450ms ease-in-out;
+            margin: 30px auto 10px;
+        }
+
+        .sparkle {
+            fill: #AAAAAA;
+            transition: all 800ms ease;
+        }
+
+        .text {
+            font-weight: 600;
+            color: #AAAAAA;
+            font-size: medium;
+        }
+
+        .btn:hover {
+            background: linear-gradient(0deg, #A47CF3, #683FEA);
+            box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+            inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+            0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+            0px 0px 180px 0px #9917FF;
+            transform: translateY(-2px);
+        }
+
+        .btn:hover .text {
+            color: white;
+        }
+
+        .btn:hover .sparkle {
+            fill: white;
+            transform: scale(1.2);
+        }
