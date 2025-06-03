@@ -1,4 +1,4 @@
-               body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
@@ -310,4 +310,57 @@
             transform: scale(1.2);
         }
 
+                /* Estilos para el mensaje personalizado */
+        .mensaje-personalizado {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
         
+        .mensaje-contenido {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 80%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: aparecer 0.5s ease-out;
+        }
+        
+        .mensaje-contenido h2 {
+            color: #ff66b3;
+            margin-top: 0;
+        }
+        
+        #cerrarMensaje {
+            background-color: #ff66b3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        #cerrarMensaje:hover {
+            background-color: #e64c9d;
+        }
+        
+        @keyframes aparecer {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
